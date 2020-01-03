@@ -6,6 +6,7 @@ const BookItemWrapper = styled.section`
   padding: 8px;
   background-color: white;
   margin-bottom: 8px;
+  display: flex;
   h2 {
     small {
       font-size: 14px;
@@ -14,15 +15,36 @@ const BookItemWrapper = styled.section`
     }
   }
 `
+const BookImgWrapper = styled.div`
+  max-width: 200px;
+  img {
+    max-width: 200px;
+  }
+`
+const BookContentWrapper = styled.div`
+  flex-grow: 1;
+  padding-left
+`
 
-export const BookItem = ({ authorName, bookSummary, bookTitle, children }) => {
+export const BookItem = ({
+  authorName,
+  bookSummary,
+  bookTitle,
+  children,
+  bookCover,
+}) => {
   return (
     <BookItemWrapper>
-      <h2>
-        {bookTitle} <small>{authorName}</small>
-      </h2>
-      <p>{bookSummary}</p>
-      <div>{children}</div>
+      <BookImgWrapper>
+        <img src={bookCover} alt="Book cover" />
+      </BookImgWrapper>
+      <BookContentWrapper>
+        <h2>
+          {bookTitle} <small>{authorName}</small>
+        </h2>
+        <p>{bookSummary}</p>
+        <div>{children}</div>
+      </BookContentWrapper>
     </BookItemWrapper>
   )
 }
